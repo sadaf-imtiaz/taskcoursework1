@@ -1,11 +1,18 @@
 import sys
 
 def decimal_to_hex(decimal_value):
+    """Convert decimal value to hexadecimal."""
+    # List of hexadecimal characters
     hex_chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
+    
+    if decimal_value == 0:
+        return "0"  # Handle edge case for 0
+    
     hexadecimal = ""
     num = decimal_value
-
-    print(f"Converting the Decimal Value {num} to Hex...")
+    
+    # Logging the process
+    print(f"Starting conversion of Decimal Value {num} to Hex...")
 
     while num != 0:
         rem = num % 16
@@ -15,13 +22,23 @@ def decimal_to_hex(decimal_value):
     print(f"Hexadecimal representation is: {hexadecimal}")
     return hexadecimal  # Return the hexadecimal value for testing
 
-if __name__ == "__main__":
+def main():
+    """Main function to handle command line input and conversion."""
     if len(sys.argv) > 1:
         try:
-            decimal_value = int(sys.argv[1])  # Convert the input argument to an integer
-            decimal_to_hex(decimal_value)  # Call the function with the decimal value
+            # Validate input
+            decimal_value = int(sys.argv[1])
+            if decimal_value < 0:
+                print("Please provide a positive integer.")
+            else:
+                print(f"Input decimal value: {decimal_value}")
+                decimal_to_hex(decimal_value)
         except ValueError:
-            print("Please provide a valid integer.")  # Error message if input is not a valid integer
+            print("Error: Please provide a valid integer.")
     else:
-        print("Usage: python script.py <decimal_number>")  # Message if no input is provided
+        print("Usage: python script.py <decimal_number>")
+
+if __name__ == "__main__":
+    main()
+
 
