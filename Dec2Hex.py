@@ -37,7 +37,7 @@ def main():
                 print(f"Input decimal value: {decimal_value}")
                 decimal_to_hex(decimal_value)
         except ValueError:
-            print("Error: Please provide a valid integer.")
+            print("Error: Please provide a valid integer.") #display error
     else:
         print("Usage: python script.py <decimal_number>")
 
